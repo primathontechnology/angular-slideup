@@ -17,13 +17,13 @@
   ],
   "license": "MIT",
   "author": {
-    "name": "Primathon Tech",
+    "name": "primathontech",
     "email": "tech-admin@primathon.in"
   },
   "contributors": [
     "Ramvishvas Kumar <ramvishvasg@gmail.com>"
   ],
-  "repository": "https://github.com/ng-web-apis/intersection-observer",
-  "bugs": "https://github.com/ng-web-apis/intersection-observer/issues",
-  "homepage": "https://github.com/ng-web-apis/intersection-observer#README"
+  "repository": "https://github.com/primathontech/angular-slideup",
+  "bugs": "https://github.com/primathontech/angular-slideup/issues",
+  "homepage": "https://github.com/primathontech/angular-slideup#README"
 }

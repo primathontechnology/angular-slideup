@@ -1,9 +1,9 @@
-import { ElementRef, Inject, Injectable, Optional } from "@angular/core";
-import { Observable } from "rxjs";
-import { share } from "rxjs/operators";
-import { INTERSECTION_ROOT_MARGIN } from "../tokens/intersection-root-margin";
-import { INTERSECTION_THRESHOLD } from "../tokens/intersection-threshold";
-import { INTERSECTION_OBSERVER_SUPPORT } from "../tokens/support";
+import { ElementRef, Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { share } from 'rxjs/operators';
+import { INTERSECTION_ROOT_MARGIN } from './tokens/intersection-root-margin';
+import { INTERSECTION_THRESHOLD } from './tokens/intersection-threshold';
+import { INTERSECTION_OBSERVER_SUPPORT } from './tokens/support';
 
 @Injectable()
 export class IntersectionObserverService extends Observable<
@@ -18,7 +18,7 @@ export class IntersectionObserverService extends Observable<
         super((subscriber) => {
             if (!support) {
                 subscriber.error(
-                    "IntersectionObserver is not supported in your browser"
+                    'IntersectionObserver is not supported in your browser'
                 );
 
                 return;

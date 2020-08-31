@@ -1,24 +1,112 @@
-# AngularSlideUp
+# ![primathon logo](https://primathon.in/assets/img/logo-primathon.png) SlideUp Animation Using Directive for Angular
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
+This is a library for declarative use of
+[Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+with Angular For Animation.
 
-## Code scaffolding
+<br/>
 
-Run `ng generate component component-name --project angular-slide-up` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project angular-slide-up`.
-> Note: Don't forget to add `--project angular-slide-up` or else it will be added to the default project in your `angular.json` file. 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-## Build
+<br/>
 
-Run `ng build angular-slide-up` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Install
 
-## Publishing
+```
+npm i @primathon/angular-slideup
+```
 
-After building your library with `ng build angular-slide-up`, go to the dist folder `cd dist/angular-slide-up` and run `npm publish`.
+## Required
 
-## Running unit tests
+```
+You must install "IntersectionObserver polyfill" for all browser support
+```
 
-Run `ng test angular-slide-up` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Usage
 
-## Further help
+1. Install [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) into your project
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    > npm i intersection-observer
+
+1. Add [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) inside `polyfills.ts` into your project
+
+    > import "intersection-observer";
+
+1. Add below code snippet inside your root stylesheet(`src/styles.scss`)
+
+```
+.defaultFadeInUp {
+    opacity: 0;
+}
+
+.fadeInUp {
+    animation-duration: 1s;
+    animation-fill-mode: "both";
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+```
+
+## Examples
+
+Apply slideup animation by adding directive:
+
+```html
+<section angularSlideUp>
+    <div>Angular SlideUp Animation</div>
+    <div>Successfully Applied</div>
+    <div>On This Text/Section.</div>
+</section>
+```
+
+## Services
+
+Alternatively you can use `Observable`-based services:
+
+1. `IntersectionObserverService` can be used to observe single element independently. Provide tokens manually to configure it:
+
+```typescript
+@Component({
+    selector: "primathon-component",
+    providers: [
+        IntersectionObserverService,
+        {
+            provide: INTERSECTION_THRESHOLD,
+            useValue: 0.2,
+        },
+        {
+            provide: INTERSECTION_ROOT_MARGIN,
+            useValue: "0px",
+        },
+    ],
+})
+export class PrimathonComponent {
+    constructor(
+        @Inject(IntersectionObserverService)
+        intersectionObserverService$: IntersectionObserverService
+    ) {
+        intersectionObserverService$.subscribe((entries) => {
+            // Don't forget to unsubscribe
+            console.log(entries);
+        });
+    }
+}
+```
+
+## Demo
+
+comming soon...
+
+## See also
+
+Other [Web APIs for Angular](https://primathontech.github.io/) by [@primathontech](https://github.com/primathontech)

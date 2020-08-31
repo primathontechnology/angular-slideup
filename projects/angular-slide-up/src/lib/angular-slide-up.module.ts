@@ -1,9 +1,8 @@
-import { NgModule } from "@angular/core";
-import { DIRECTIVES } from "./directives";
-import { AngularSlideUpDirective } from "./directives";
+import { NgModule } from '@angular/core';
+import { AngularSlideUpDirective } from './angular-slide-up.directive';
 
 @NgModule({
-    declarations: [...DIRECTIVES],
+    declarations: [AngularSlideUpDirective],
     imports: [],
     exports: [AngularSlideUpDirective],
 })

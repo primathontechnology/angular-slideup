@@ -1,17 +1,18 @@
+import { OnDestroy } from '@angular/core';
 import {
     Directive,
     Inject,
     PLATFORM_ID,
     Renderer2,
     ElementRef,
-} from "@angular/core";
-import { isPlatformBrowser } from "@angular/common";
-import { IntersectionObserverService } from "../services";
-import { INTERSECTION_THRESHOLD, INTERSECTION_ROOT_MARGIN } from "../tokens";
-import { Subscription } from "rxjs";
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { INTERSECTION_THRESHOLD, INTERSECTION_ROOT_MARGIN } from './tokens';
+import { Subscription } from 'rxjs';
+import { IntersectionObserverService } from './intersection-observer.service';
 
 @Directive({
-    selector: "[angularSlideUp]",
+    selector: '[angularSlideUp]',
     providers: [
         IntersectionObserverService,
         {
@@ -20,11 +21,11 @@ import { Subscription } from "rxjs";
         },
         {
             provide: INTERSECTION_ROOT_MARGIN,
-            useValue: "0px",
+            useValue: '0px',
         },
     ],
 })
-export class AngularSlideUpDirective {
+export class AngularSlideUpDirective implements OnDestroy {
     private sub$: Subscription;
 
     constructor(
@@ -37,7 +38,7 @@ export class AngularSlideUpDirective {
         if (isPlatformBrowser(this.platformId)) {
             this.renderer.addClass(
                 this.element.nativeElement,
-                "defaultFadeInUp"
+                'defaultFadeInUp'
             );
             // Don't forget to unsubscribe
             this.sub$ = this.intersectionObserverService.subscribe(
@@ -52,7 +53,7 @@ export class AngularSlideUpDirective {
 
     private checkVisibility() {
         if (isPlatformBrowser(this.platformId)) {
-            this.renderer.addClass(this.element.nativeElement, "fadeInUp");
+            this.renderer.addClass(this.element.nativeElement, 'fadeInUp');
         }
     }
 

@@ -26,8 +26,36 @@ You must install "IntersectionObserver polyfill" for all browser support
 
 1. Install [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) into your project
 
+    > npm i intersection-observer
+
 1. Add [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) inside `polyfills.ts` into your project
+
     > import "intersection-observer";
+
+1. Add below code snippet inside your root stylesheet(`src/styles.scss`)
+
+```
+.defaultFadeInUp {
+    opacity: 0;
+}
+
+.fadeInUp {
+    animation-duration: 1s;
+    animation-fill-mode: "both";
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+```
 
 ## Examples
 

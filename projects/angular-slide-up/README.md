@@ -107,7 +107,7 @@ export class PrimathonComponent {
 
 ## Demo
 
-comming soon...
+Demo url https://primathontech.github.io/angular-slideup/
 
 ## See also
 

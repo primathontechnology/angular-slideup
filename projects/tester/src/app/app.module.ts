@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 // import { AngularSlideUpModule } from 'projects/angular-slide-up/src/lib/angular-slide-up.module';
 // import { AngularSlideUpModule } from 'projects/angular-slide-up/src/public-api';
 import { AngularSlideUpModule } from 'angular-slide-up';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, CardComponent],
     imports: [BrowserModule, AngularSlideUpModule],
     providers: [],
     bootstrap: [AppComponent],

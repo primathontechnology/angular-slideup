@@ -28,11 +28,13 @@ You must install "IntersectionObserver polyfill" for all browser support
 
     > npm i intersection-observer
 
-1. Add [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) inside `polyfills.ts` into your project
+1. Import [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) inside `polyfills.ts` into your project
 
     > import "intersection-observer";
 
-1. Add below code snippet inside your root stylesheet(`src/styles.scss`)
+1. Import `AngularSlideUpModule` inside your AppModule (`src/app/app.module.ts`)
+
+1. Import below code snippet inside your root stylesheet(`src/styles.scss`)
 
 ```
 .defaultFadeInUp {

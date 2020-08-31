@@ -1,4 +1,4 @@
-# ![primathon logo](projects/tester/src/assets/logo.png) SlideUp Animation Using Directive for Angular
+# ![primathon logo](https://primathon.in/assets/img/logo-primathon.png) SlideUp Animation Using Directive for Angular
 
 This is a library for declarative use of
 [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install
 
 ```
-npm i @primathon/angular-slideup
+npm i angular-slide-up
 ```
 
 ## Required

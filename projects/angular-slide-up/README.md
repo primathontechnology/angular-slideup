@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Install
 
 ```
-npm i @primathon/angular-slideup
+npm i angular-slide-up
 ```
 
 ## Required

@@ -4,3 +4,4 @@
 
 export * from "./lib/angular-slide-up.module";
 export * from "./lib/directives/angular-slide-up.directive";
+export * from "./lib/services/intersection-observer.service";

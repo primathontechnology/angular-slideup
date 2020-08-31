@@ -1,27 +1,84 @@
-# SlideUp
+# ![primathon logo](projects/tester/src/assets/logo.png) SlideUp Animation Using Directive for Angular
+
+This is a library for declarative use of
+[Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+with Angular For Animation.
+
+<br/>
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-## Development server
+<br/>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install
 
-## Code scaffolding
+```
+npm i @primathon/angular-slideup
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Required
 
-## Build
+```
+You must install "IntersectionObserver polyfill" for all browser support
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Usage
 
-## Running unit tests
+1. Install [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) into your project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. Add [IntersectionObserver polyfill](https://www.npmjs.com/package/intersection-observer) inside `polyfills.ts` into your project
+    > import "intersection-observer";
 
-## Running end-to-end tests
+## Examples
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Apply slideup animation by adding directive:
 
-## Further help
+```html
+<section angularSlideUp>
+    <div>Angular SlideUp Animation</div>
+    <div>Successfully Applied</div>
+    <div>On This Text/Section.</div>
+</section>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Services
+
+Alternatively you can use `Observable`-based services:
+
+1. `IntersectionObserverService` can be used to observe single element independently. Provide tokens manually to configure it:
+
+```typescript
+@Component({
+    selector: "primathon-component",
+    providers: [
+        IntersectionObserverService,
+        {
+            provide: INTERSECTION_THRESHOLD,
+            useValue: 0.2,
+        },
+        {
+            provide: INTERSECTION_ROOT_MARGIN,
+            useValue: "0px",
+        },
+    ],
+})
+export class PrimathonComponent {
+    constructor(
+        @Inject(IntersectionObserverService)
+        intersectionObserverService$: IntersectionObserverService
+    ) {
+        intersectionObserverService$.subscribe((entries) => {
+            // Don't forget to unsubscribe
+            console.log(entries);
+        });
+    }
+}
+```
+
+## Demo
+
+comming soon...
+
+## See also
+
+Other [Web APIs for Angular](https://primathontech.github.io/) by [@primathontech](https://github.com/primathontech)

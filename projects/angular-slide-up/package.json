@@ -6,7 +6,7 @@
     "@angular/core": "^9.0.7",
     "tslib": "^1.10.0"
   },
-  "description": "A library for declarative use of Intersection Observer API with Angular",
+  "description": "A library for slideup animation using directive with Angular",
   "keywords": [
     "angular",
     "ng",

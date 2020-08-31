@@ -1,17 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+.defaultFadeInUp {
+    opacity: 0;
+}
+
 .fadeInUp {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeInUp;
 }
 
 @keyframes fadeInUp {
-  from {
-    transform: translate3d(0, 40px, 0);
-  }
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
 
-  to {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
 }

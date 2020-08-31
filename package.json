@@ -12,7 +12,7 @@
         "minor": "npm version minor",
         "major": "npm version major",
         "publish": "ng build angular-slide-up --prod && npm publish ./dist/angular-slide-up",
-        "release": "ng build tester --prod --base-href https://primathontech.github.io/home/"
+        "build:ui": "ng build tester --prod --base-href https://primathontech.github.io/angular-slideup/"
     },
     "private": true,
     "dependencies": {

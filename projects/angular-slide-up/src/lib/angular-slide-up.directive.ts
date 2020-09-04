@@ -1,4 +1,10 @@
-import { OnDestroy } from '@angular/core';
+import {
+    OnDestroy,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    AfterViewInit,
+} from '@angular/core';
 import {
     Directive,
     Inject,
@@ -25,7 +31,12 @@ import { IntersectionObserverService } from './intersection-observer.service';
         },
     ],
 })
-export class AngularSlideUpDirective implements OnDestroy {
+export class AngularSlideUpDirective implements AfterViewInit, OnDestroy {
+    @Input() angularSlideUp: boolean = false;
+
+    private childrenNode = [];
+    private timeOut = [];
+
     private sub$: Subscription;
 
     constructor(
@@ -34,12 +45,32 @@ export class AngularSlideUpDirective implements OnDestroy {
         private intersectionObserverService: IntersectionObserverService,
         private renderer: Renderer2,
         private element: ElementRef
-    ) {
+    ) {}
+
+    ngAfterViewInit(): void {
+        this.initSlideup();
+    }
+
+    initSlideup() {
         if (isPlatformBrowser(this.platformId)) {
             this.renderer.addClass(
                 this.element.nativeElement,
                 'defaultFadeInUp'
             );
+
+            // Check For Stagger
+            if (this.angularSlideUp) {
+                this.childrenNode = this.element.nativeElement.querySelectorAll(
+                    '[stagger=true]'
+                );
+
+                if (this.childrenNode) {
+                    for (const elem of this.childrenNode) {
+                        this.renderer.addClass(elem, 'defaultFadeInUp');
+                    }
+                }
+            }
+
             // Don't forget to unsubscribe
             this.sub$ = this.intersectionObserverService.subscribe(
                 (entries) => {
@@ -54,6 +85,20 @@ export class AngularSlideUpDirective implements OnDestroy {
     private checkVisibility() {
         if (isPlatformBrowser(this.platformId)) {
             this.renderer.addClass(this.element.nativeElement, 'fadeInUp');
+
+            if (this.angularSlideUp) {
+                let timerVal = 0;
+
+                for (const elem of this.childrenNode) {
+                    const timeout = setTimeout(() => {
+                        this.renderer.addClass(elem, 'fadeInUp');
+                    }, timerVal);
+
+                    this.timeOut.push(timeout);
+
+                    timerVal += 300;
+                }
+            }
         }
     }
 
@@ -61,5 +106,9 @@ export class AngularSlideUpDirective implements OnDestroy {
         if (this.sub$) {
             this.sub$.unsubscribe();
         }
+
+        this.timeOut.forEach((timer) => {
+            clearTimeout(timer);
+        });
     }
 }

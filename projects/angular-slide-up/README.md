@@ -63,11 +63,23 @@ You must install "IntersectionObserver polyfill" for all browser support
 
 Apply slideup animation by adding directive:
 
+`Without Stagger`
+
 ```html
 <section angularSlideUp>
     <div>Angular SlideUp Animation</div>
     <div>Successfully Applied</div>
     <div>On This Text/Section.</div>
+</section>
+```
+
+`With Stagger`
+
+```html
+<section [angularSlideUp]="true">
+    <div [attr.stagger]="true">Angular SlideUp Animation</div>
+    <div [attr.stagger]="true">Successfully Applied</div>
+    <div [attr.stagger]="true">On This Text/Section.</div>
 </section>
 ```
 
